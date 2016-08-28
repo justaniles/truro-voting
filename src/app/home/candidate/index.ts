@@ -1,1 +1,2 @@
-export * from "candidate.service";
+export * from "./candidate.models";
+export * from "./candidate.service";

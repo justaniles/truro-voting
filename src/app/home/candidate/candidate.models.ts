@@ -1,10 +1,12 @@
 export interface CandidateContract {
+  id: string;
   name: string;
   imageUrl?: string;
   description?: string;
 }
 
 export class Candidate implements CandidateContract {
+  id: string;
   name: string;
   imageUrl = "";
   description = "Default bio";

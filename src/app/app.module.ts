@@ -1,17 +1,20 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
+import { MdCardModule } from "@angular2-material/card";
+import { MdButtonModule } from "@angular2-material/button";
 import { AppComponent }   from "./app.component";
-import { AppRouting } from "./app.routes";
 import { HomeModule } from "./home";
 
 @NgModule({
   declarations: [ AppComponent ],
   imports: [
-    AppRouting,
     BrowserModule,
     HomeModule,
-    RouterModule
+    MdCardModule,
+    MdButtonModule,
+    RouterModule,
+    RouterModule.forRoot([])
   ],
   bootstrap: [ AppComponent ],
 })
