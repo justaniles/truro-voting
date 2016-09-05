@@ -1,10 +1,13 @@
 <div class="row">
-  <div class="col-sm-4">
-    <md-card *ngFor="let candidate of candidates;">
-      <md-card-header>{{candidate.name}}</md-card-header>
-      <p>{{candidate.description}}</p>
-      <button md-button>Submit</button>
+  <div class="candidate-card col-sm-4" *ngFor="let candidate of candidates;">
+    <md-card>
+      <md-card-title>{{candidate.name}}</md-card-title>
+      <md-card-content>
+        <p>{{candidate.description}}</p>
+      </md-card-content>
+      <md-card-actions align="end">
+        <button md-button>Submit</button>
+      </md-card-actions>
     </md-card>
   </div>
 </div>
-

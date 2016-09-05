@@ -5,6 +5,7 @@ import { MdCardModule } from "@angular2-material/card";
 import { MdButtonModule } from "@angular2-material/button";
 import { AppComponent }   from "./app.component";
 import { HomeModule } from "./home";
+import { NavbarModule } from "./navbar";
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -13,6 +14,7 @@ import { HomeModule } from "./home";
     HomeModule,
     MdCardModule,
     MdButtonModule,
+    NavbarModule,
     RouterModule,
     RouterModule.forRoot([])
   ],
