@@ -1,3 +1,51 @@
-.test {
-  background-color: red;
+@import "../shared/styles";
+
+:host {
+  height: $nav-height;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.nav-container {
+  height: 100%;
+  display: flex;
+}
+
+.nav-container-left {
+  height: 100%;
+  margin-right: auto;
+}
+
+.nav-container-right {
+  height: 100%;
+  margin-left: auto;
+}
+
+.nav-logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: $tv-black;
+  font-size: 1.5em;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.nav-item {
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: $tv-black;
+  min-width: 6rem;
+
+  &:hover {
+    color: lighten($tv-black, 25%);
+    background-color: $tv-light-gray;
+    cursor: pointer;
+  }
 }
