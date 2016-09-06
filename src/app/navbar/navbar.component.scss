@@ -6,6 +6,7 @@
   position: fixed;
   top: 0px;
   left: 0px;
+  -webkit-transform: scale3d(1,1,1); // to fix Chrome mobile issues
   z-index: 2;
   background-color: rgba($tv-white, 0.9);
 }
