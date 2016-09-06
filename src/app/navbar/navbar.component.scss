@@ -6,6 +6,8 @@
   position: fixed;
   top: 0px;
   left: 0px;
+  z-index: 2;
+  background-color: rgba($tv-white, 0.9);
 }
 
 .nav-container {
@@ -44,7 +46,6 @@
   min-width: 6rem;
 
   &:hover {
-    color: lighten($tv-black, 25%);
     background-color: $tv-light-gray;
     cursor: pointer;
   }

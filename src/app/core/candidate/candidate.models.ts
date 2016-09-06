@@ -10,7 +10,7 @@ export class Candidate implements CandidateContract {
   id: string;
   name: string;
   voteCount = 0;
-  imageUrl = "";
+  imageUrl = "http://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/15/09/jon-snow.jpg";
   description = "Default bio";
 
   constructor(candidateInfo: CandidateContract) {

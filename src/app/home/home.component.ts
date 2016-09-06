@@ -17,6 +17,6 @@ export class HomeComponent implements OnInit {
   }
 
   incrementVote(candidate: Candidate): void {
-    this.candidateService.incrementVoteCount(candidate);
+    this.candidateService.incrementVoteCount(candidate.id);
   }
 }

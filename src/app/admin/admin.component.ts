@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
   }
 
   incrementVote(candidate: Candidate): void {
-    this.candidateService.incrementVoteCount(candidate);
+    this.candidateService.incrementVoteCount(candidate.id);
   }
 
   decrementVote(candidate: Candidate): void {

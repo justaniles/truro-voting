@@ -16,7 +16,18 @@ export class CandidateService {
     return this.loadedCandidates;
   }
 
-  incrementVoteCount(candidate: Candidate): void {
-    candidate.voteCount += 1;
+  incrementVoteCount(candidateId: string): void {
+    let foundCandidate: Candidate = null;
+    this.loadedCandidates.some((candidate) => {
+      if (candidate.id === candidateId) {
+        foundCandidate = candidate;
+        return true;
+      }
+      return false;
+    });
+
+    if (foundCandidate) {
+      foundCandidate.voteCount += 1;
+    }
   }
 }
