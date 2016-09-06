@@ -3,18 +3,18 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { MdCardModule } from "@angular2-material/card";
 import { MdButtonModule } from "@angular2-material/button";
-import { HomeComponent } from "./home.component";
-import { homeRoutes } from "./home.routes";
+import { AdminComponent } from "./admin.component";
+import { adminRoutes } from "./admin.routes";
 
 @NgModule({
-  declarations: [ HomeComponent ],
+  declarations: [ AdminComponent ],
   imports: [
     CommonModule,
     MdCardModule,
     MdButtonModule,
     RouterModule,
-    homeRoutes
+    adminRoutes
   ]
 })
-export class HomeModule {
+export class AdminModule {
 }

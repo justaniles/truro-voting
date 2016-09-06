@@ -3,10 +3,10 @@
     <md-card>
       <md-card-title>{{candidate.name}}</md-card-title>
       <md-card-content>
-        <p>{{candidate.description}}</p>
+        <p>{{candidate.description}} | {{candidate.voteCount}}</p>
       </md-card-content>
       <md-card-actions align="end">
-        <button md-button>Submit</button>
+        <button md-button (click)="incrementVote(candidate)">Vote</button>
       </md-card-actions>
     </md-card>
   </div>

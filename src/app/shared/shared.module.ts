@@ -7,12 +7,4 @@ import { CommonModule } from "@angular/common";
   exports: [ CommonModule ]
 })
 export class SharedModule {
-
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [ ]
-    };
-  }
-
 }
