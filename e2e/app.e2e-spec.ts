@@ -1,10 +1,10 @@
-import { TruroVotingPage } from './app.po';
+import { TruroVotingUpgradePage } from './app.po';
 
-describe('truro-voting App', function() {
-  let page: TruroVotingPage;
+describe('truro-voting-upgrade App', function() {
+  let page: TruroVotingUpgradePage;
 
   beforeEach(() => {
-    page = new TruroVotingPage();
+    page = new TruroVotingUpgradePage();
   });
 
   it('should display message saying app works', () => {

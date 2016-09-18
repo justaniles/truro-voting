@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor/globals';
 
-export class TruroVotingPage {
+export class TruroVotingUpgradePage {
   navigateTo() {
     return browser.get('/');
   }
