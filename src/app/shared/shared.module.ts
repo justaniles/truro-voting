@@ -2,9 +2,9 @@ import { NgModule, ModuleWithProviders } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 @NgModule({
-  imports: [ CommonModule ],
-  declarations: [ ],
-  exports: [ CommonModule ]
+    imports: [ CommonModule ],
+    declarations: [],
+    exports: [ CommonModule ]
 })
 export class SharedModule {
 }

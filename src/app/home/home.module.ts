@@ -7,14 +7,14 @@ import { HomeComponent } from "./home.component";
 import { homeRoutes } from "./home.routes";
 
 @NgModule({
-  declarations: [ HomeComponent ],
-  imports: [
-    CommonModule,
-    MdCardModule,
-    MdButtonModule,
-    RouterModule,
-    homeRoutes
-  ]
+    declarations: [ HomeComponent ],
+    imports: [
+        CommonModule,
+        MdCardModule,
+        MdButtonModule,
+        RouterModule,
+        homeRoutes
+    ]
 })
 export class HomeModule {
 }

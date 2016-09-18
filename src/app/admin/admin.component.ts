@@ -2,25 +2,25 @@ import { Component, OnInit } from "@angular/core";
 import { Candidate, CandidateService } from "../core/candidate";
 
 @Component({
-  selector: "admin .container",
-  templateUrl: "./admin.component.html",
-  styleUrls: [ "./admin.component.scss" ]
+    selector: "admin .container",
+    templateUrl: "./admin.component.html",
+    styleUrls: [ "./admin.component.scss" ]
 })
 export class AdminComponent implements OnInit {
-  candidates: Candidate[] = [];
+    candidates: Candidate[] = [];
 
-  constructor(private candidateService: CandidateService) {
-  }
+    constructor(private candidateService: CandidateService) {
+    }
 
-  ngOnInit() {
-    this.candidates = this.candidateService.getCandidates();
-  }
+    ngOnInit() {
+        this.candidates = this.candidateService.getCandidates();
+    }
 
-  incrementVote(candidate: Candidate): void {
-    this.candidateService.incrementVoteCount(candidate.id);
-  }
+    incrementVote(candidate: Candidate): void {
+        this.candidateService.incrementVoteCount(candidate.id);
+    }
 
-  decrementVote(candidate: Candidate): void {
+    decrementVote(candidate: Candidate): void {
 
-  }
+    }
 }

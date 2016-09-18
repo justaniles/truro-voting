@@ -11,19 +11,19 @@ import { NavbarModule } from "./navbar";
 import { CoreModule } from "./core";
 
 @NgModule({
-  declarations: [ AppComponent ],
-  imports: [
-    AdminModule,
-    BrowserModule,
-    HomeModule,
-    MdCardModule,
-    MdButtonModule,
-    NavbarModule,
-    RouterModule,
-    RouterModule.forRoot([]),
-    CoreModule.forRoot()
-  ],
-  bootstrap: [ AppComponent ],
+    declarations: [ AppComponent ],
+    imports: [
+        AdminModule,
+        BrowserModule,
+        HomeModule,
+        MdCardModule,
+        MdButtonModule,
+        NavbarModule,
+        RouterModule,
+        RouterModule.forRoot([]),
+        CoreModule.forRoot()
+    ],
+    bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }
