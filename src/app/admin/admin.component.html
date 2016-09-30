@@ -1,6 +1,23 @@
-<div class="candidate-list">
-    <div class="candidate-list-item" *ngFor="let candidate of candidates;">
-        <span class="candidate-name">{{candidate.name}}</span>
-        <span class="candidate-count">{{candidate.voteCount}}</span>
-    </div>
+<div class="poll-options-container">
+    <md-card>
+        <md-card-title>Poll options</md-card-title>
+        <md-card-content>
+            <md-input placeholder="Min number of votes" type="number" [(ngModel)]="minVotes"></md-input>
+            <md-input placeholder="Max number of votes" type="number" [(ngModel)]="maxVotes"></md-input>
+            <md-slide-toggle id="pollsopen" [(ngModel)]="pollsOpen">Polls open</md-slide-toggle>
+        </md-card-content>
+    </md-card>
+</div>
+<div class="candidate-list-container">
+    <md-card>
+        <md-card-title>Current candidates</md-card-title>
+        <md-card-content>
+            <div class="candidate-list">
+                <div class="candidate-list-item" *ngFor="let candidate of candidates;">
+                    <span class="candidate-name">{{candidate.name}}</span>
+                    <span class="candidate-count">{{candidate.voteCount}}</span>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
 </div>

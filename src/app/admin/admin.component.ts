@@ -8,12 +8,19 @@ import { Candidate, CandidateService } from "../core/candidate";
 })
 export class AdminComponent implements OnInit {
     candidates: Candidate[] = [];
+    minVotes: number = 0;
+    maxVotes: number = 10;
+    pollsOpen: boolean = false;
 
     constructor(private candidateService: CandidateService) {
     }
 
     ngOnInit() {
         this.candidates = this.candidateService.getCandidates();
+    }
+
+    slideEvent(event) {
+        console.log(event);
     }
 
     incrementVote(candidate: Candidate): void {
