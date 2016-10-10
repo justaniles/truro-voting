@@ -1,0 +1,28 @@
+{
+  "index": 2,
+  "candidates": {
+    "0": {
+      "name": "Justin Niles",
+      "bio": "Short 1-2 sentence bio.",
+      "photo": "justin_niles_0.jpeg"
+    },
+    "1": {
+      "name":"Mike Purncy",
+      "bio": "Second bio.",
+      "photo": "mike_purncy_1.jpeg"
+    }
+  },
+  "results": {
+    "0": {
+      "votes": 10
+    },
+    "1": {
+      "votes": 4
+    }
+  },
+  "admin": {
+    "minVotes": 1,
+    "maxVotes": 2,
+    "pollsOpen": true
+  }
+}
