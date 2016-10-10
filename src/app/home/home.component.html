@@ -4,7 +4,7 @@
             <img md-card-image *ngIf="candidate.imageUrl" src="{{candidate.imageUrl}}">
             <md-card-title>{{candidate.name}}</md-card-title>
             <md-card-content>
-                <p>{{candidate.description}} | {{candidate.voteCount}}</p>
+                <p>{{candidate.bio}}</p>
             </md-card-content>
             <md-card-actions align="end">
                 <button md-button (click)="incrementVote(candidate)">Vote</button>

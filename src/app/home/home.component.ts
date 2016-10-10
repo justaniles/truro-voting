@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { AngularFire, FirebaseListObservable } from "angularfire2";
+import { Observable } from "rxjs";
+
 import { Candidate, CandidateService } from "../core/candidate";
 
 @Component({
@@ -8,16 +9,15 @@ import { Candidate, CandidateService } from "../core/candidate";
     styleUrls: [ "./home.component.scss" ]
 })
 export class HomeComponent implements OnInit {
-    candidates: FirebaseListObservable<Candidate[]>;
+    candidates: Observable<Candidate[]>;
 
-    constructor(private candidateService: CandidateService, private angularFire: AngularFire) {
+    constructor(private candidateService: CandidateService) {
     }
 
     ngOnInit() {
-        this.candidates = this.angularFire.database.list("/candidates");
+        this.candidates = this.candidateService.getCandidates();
     }
 
     incrementVote(candidate: Candidate): void {
-        this.candidateService.incrementVoteCount(candidate.id);
     }
 }

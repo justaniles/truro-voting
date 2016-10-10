@@ -1,22 +1,24 @@
 {
   "index": 2,
-  "candidates": {
-    "0": {
+  "candidates": [
+    {
+      "id": "candidate0",
       "name": "Justin Niles",
       "bio": "Short 1-2 sentence bio.",
-      "photo": "justin_niles_0.jpeg"
+      "imageUrl": "https://s-media-cache-ak0.pinimg.com/564x/ae/d4/d2/aed4d2966303431ea7706b90dd4f0293.jpg"
     },
-    "1": {
+    {
+      "id": "candidate1",
       "name":"Mike Purncy",
       "bio": "Second bio.",
-      "photo": "mike_purncy_1.jpeg"
+      "imageUrl": "http://img.huffingtonpost.com/asset/scalefit_630_noupscale/56e024e81500002a000b1742.jpeg"
     }
-  },
+  ],
   "results": {
-    "0": {
+    "candidate0": {
       "votes": 10
     },
-    "1": {
+    "candidate1": {
       "votes": 4
     }
   },

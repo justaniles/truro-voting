@@ -1,33 +1,27 @@
-import { Candidate } from "./candidate.models";
-import { mockCandidates } from "./candidate.mocks";
 import { Injectable } from "@angular/core";
+import { AngularFire, FirebaseListObservable } from "angularfire2";
+import { Observable, Subject } from "rxjs";
+
+import { Candidate } from "./candidate.models";
 
 @Injectable()
 export class CandidateService {
 
-    loadedCandidates: Candidate[];
+    private firebaseCandidates: FirebaseListObservable<Candidate[]>;
+    private loadedCandidates: Subject<Candidate[]>;
 
-    constructor() {
-        console.log("Candidate service instantiated");
-        this.loadedCandidates = mockCandidates;
-    }
+    constructor(private angularFire: AngularFire) {
+        this.loadedCandidates = new Subject<Candidate[]>();
+        this.firebaseCandidates = angularFire.database.list("/candidates");
 
-    getCandidates(): Candidate[] {
-        return this.loadedCandidates;
-    }
-
-    incrementVoteCount(candidateId: string): void {
-        let foundCandidate: Candidate = null;
-        this.loadedCandidates.some((candidate) => {
-            if (candidate.id === candidateId) {
-                foundCandidate = candidate;
-                return true;
-            }
-            return false;
+        this.firebaseCandidates.subscribe((candidates: Candidate[]) => {
+            this.loadedCandidates.next(candidates);
         });
 
-        if (foundCandidate) {
-            foundCandidate.voteCount += 1;
-        }
+        console.log("FirebaseCandidate service instantiated");
+    }
+
+    getCandidates(): Observable<Candidate[]> {
+        return this.loadedCandidates.asObservable();
     }
 }

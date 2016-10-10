@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+
 import { Candidate, CandidateService } from "../core/candidate";
 
 @Component({
@@ -7,7 +9,7 @@ import { Candidate, CandidateService } from "../core/candidate";
     styleUrls: [ "./admin.component.scss" ]
 })
 export class AdminComponent implements OnInit {
-    candidates: Candidate[] = [];
+    candidates: Observable<Candidate[]>;
     minVotes: number = 0;
     maxVotes: number = 10;
     pollsOpen: boolean = false;
@@ -21,13 +23,5 @@ export class AdminComponent implements OnInit {
 
     slideEvent(event) {
         console.log(event);
-    }
-
-    incrementVote(candidate: Candidate): void {
-        this.candidateService.incrementVoteCount(candidate.id);
-    }
-
-    decrementVote(candidate: Candidate): void {
-
     }
 }

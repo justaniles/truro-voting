@@ -13,7 +13,7 @@
         <md-card-title>Current candidates</md-card-title>
         <md-card-content>
             <div class="candidate-list">
-                <div class="candidate-list-item" *ngFor="let candidate of candidates;">
+                <div class="candidate-list-item" *ngFor="let candidate of candidates | async;">
                     <span class="candidate-name">{{candidate.name}}</span>
                     <span class="candidate-count">{{candidate.voteCount}}</span>
                 </div>
