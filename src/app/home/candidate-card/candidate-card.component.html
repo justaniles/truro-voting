@@ -1,0 +1,8 @@
+<md-card class="candidate">
+    <span class="checked-icon fa fa-check-circle" [ngClass]="{active: selected}"></span>
+    <img md-card-image *ngIf="candidate.imageUrl" src="{{candidate.imageUrl}}">
+    <md-card-title>{{candidate.name}}</md-card-title>
+    <md-card-content>
+        <p>{{candidate.bio}}</p>
+    </md-card-content>
+</md-card>
