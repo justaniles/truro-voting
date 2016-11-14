@@ -1,4 +1,4 @@
-@import "../shared/styles";
+@import "../../styles/variables";
 
 :host {
     height: $nav-height;
@@ -8,7 +8,7 @@
     left: 0px;
     -webkit-transform: scale3d(1, 1, 1); // to fix Chrome mobile issues
     z-index: 2;
-    background-color: rgba($tv-white, 0.9);
+    background-color: $tv-primary;
 }
 
 .nav-container {
@@ -30,7 +30,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    color: $tv-black;
+    color: $tv-white;
     font-size: 1.5em;
 
     &:hover {
@@ -43,11 +43,12 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    color: $tv-black;
+    color: $tv-white;
+    cursor: pointer;
     min-width: 6rem;
 
     &:hover {
-        background-color: $tv-light-gray;
+        background-color: rgba($tv-white, 0.3);
         cursor: pointer;
     }
 }

@@ -1,0 +1,11 @@
+<div class="action-bar" [ngClass]="{'visible': visible}">
+    <div class="action-bar-container container">
+        <div class="action-bar-container-inner left">
+            <span>{{message}}</span>
+        </div>
+        <div class="action-bar-container-inner right">
+            <button class="action-button btn-flat" (click)="secondaryButtonClicked.emit(null);">{{secondaryButtonText}}</button>
+            <button class="action-button btn" (click)="primaryButtonClicked.emit(null);">{{primaryButtonText}}</button>
+        </div>
+    </div>
+</div>

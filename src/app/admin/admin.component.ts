@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { Candidate, CandidateService } from "../core/candidate";
+import { Candidate, FirebaseService } from "../core/firebase";
 
 @Component({
     selector: "admin .container",
@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
     maxVotes: number = 10;
     pollsOpen: boolean = false;
 
-    constructor(private candidateService: CandidateService) {
+    constructor(private candidateService: FirebaseService) {
     }
 
     ngOnInit() {

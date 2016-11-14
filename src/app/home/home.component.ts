@@ -1,23 +1,48 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { Candidate, CandidateService } from "../core/candidate";
+import { CandidateCardComponent } from "./candidate-card/candidate-card.component";
+import { Candidate, FirebaseService } from "../core/firebase";
 
 @Component({
-    selector: "home .container",
+    selector: "home",
     templateUrl: "./home.component.html",
     styleUrls: [ "./home.component.scss" ]
 })
 export class HomeComponent implements OnInit {
-    candidates: Observable<Candidate[]>;
+    public candidates: Observable<Candidate[]>;
+    private firebaseService: FirebaseService;
+    private selectedCandidates: CandidateCardComponent[] = [];
 
-    constructor(private candidateService: CandidateService) {
+    constructor(candidateService: FirebaseService) {
+        this.firebaseService = candidateService;
     }
 
-    ngOnInit() {
-        this.candidates = this.candidateService.getCandidates();
+    public ngOnInit() {
+        this.candidates = this.firebaseService.getCandidates();
     }
 
-    incrementVote(candidate: Candidate): void {
+    public toggleCandidateSelection(candidateComponent: CandidateCardComponent): void {
+        const newSelectionState = !candidateComponent.selected;
+        candidateComponent.selected = newSelectionState;
+
+        const candidateIndex = this.selectedCandidates.indexOf(candidateComponent);
+        if (newSelectionState && candidateIndex === -1) {
+            this.selectedCandidates.push(candidateComponent);
+        }
+        else if (!newSelectionState && candidateIndex !== -1) {
+            this.selectedCandidates.splice(candidateIndex, 1);
+        }
+    }
+
+    public actionCastVotes(): void {
+
+    }
+
+    public actionResetCandidateSelections(): void {
+        this.selectedCandidates.forEach((selectedCandidate) => {
+            selectedCandidate.selected = false;
+        });
+        this.selectedCandidates.length = 0;
     }
 }

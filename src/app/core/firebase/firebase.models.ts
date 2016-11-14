@@ -5,3 +5,9 @@ export interface Candidate {
     bio?: string;
     imageUrl?: string;
 }
+
+export interface AdminOptions {
+    minVotes: number;
+    maxVotes: number;
+    pollsOpen: boolean;
+}

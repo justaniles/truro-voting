@@ -1,9 +1,8 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
-import { MdCardModule } from "@angular2-material/card";
-import { MdButtonModule } from "@angular2-material/button";
 import { AngularFireModule } from "angularfire2";
+import { MaterializeModule } from "angular2-materialize";
 
 import { AppComponent }   from "./app.component";
 import { AdminModule } from "./admin";
@@ -27,8 +26,7 @@ var angularFireConfig = {
         BrowserModule,
         CoreModule.forRoot(),
         HomeModule,
-        MdCardModule,
-        MdButtonModule,
+        MaterializeModule,
         NavbarModule,
         RouterModule,
         RouterModule.forRoot([])

@@ -4,7 +4,7 @@ import {
 }       from '@angular/core';
 import { CommonModule }      from '@angular/common';
 
-import { CandidateService } from "./candidate";
+import { FirebaseService } from "./firebase";
 
 
 @NgModule({
@@ -22,7 +22,7 @@ export class CoreModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: CoreModule,
-            providers: [ CandidateService ]
+            providers: [ FirebaseService ]
         };
     }
 }

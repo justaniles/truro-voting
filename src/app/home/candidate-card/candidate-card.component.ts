@@ -1,6 +1,6 @@
 import { Component,  Input, Output, EventEmitter, HostListener } from "@angular/core";
 
-import { Candidate } from "../../core/candidate/candidate.models";
+import { Candidate } from "../../core/firebase/candidate.models";
 
 @Component({
     selector: "candidate-card",
@@ -8,13 +8,8 @@ import { Candidate } from "../../core/candidate/candidate.models";
     styleUrls: [ "./candidate-card.component.scss" ]
 })
 export class CandidateCardComponent {
-    @Input() candidate: Candidate;
-    @Output() select = new EventEmitter<boolean>();
-    selected = false;
+    @Input()
+    public candidate: Candidate;
 
-    @HostListener("click")
-    toggleSelected() {
-        this.selected = !this.selected;
-        this.select.emit(this.selected);
-    }
+    public selected = false;
 }
