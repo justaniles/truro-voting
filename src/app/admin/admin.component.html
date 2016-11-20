@@ -46,7 +46,7 @@
             <div class="candidate-list">
                 <div class="candidate-list-item" *ngFor="let candidate of candidates | async;">
                     <span class="candidate-name">{{candidate.name}}</span>
-                    <span class="candidate-count">{{candidate.voteCount}}</span>
+                    <span class="candidate-count">{{votingResults[candidate.id] ? votingResults[candidate.id].votes : -1 }}</span>
                 </div>
             </div>
         </div>

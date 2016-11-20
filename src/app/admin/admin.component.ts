@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { Candidate, FirebaseService } from "../core/firebase";
+import { Candidate, FirebaseService, VotingResults } from "../core/firebase";
 
 @Component({
     selector: "admin .container",
@@ -9,19 +9,24 @@ import { Candidate, FirebaseService } from "../core/firebase";
     styleUrls: [ "./admin.component.scss" ]
 })
 export class AdminComponent implements OnInit {
-    candidates: Observable<Candidate[]>;
-    minVotes: number = 0;
-    maxVotes: number = 10;
-    pollsOpen: boolean = false;
+    public candidates: Observable<Candidate[]>;
+    public minVotes: number = 0;
+    public maxVotes: number = 10;
+    public pollsOpen: boolean = false;
+    public votingResults: VotingResults;
 
-    constructor(private candidateService: FirebaseService) {
+    private firebaseService: FirebaseService;
+
+    constructor(firebaseService: FirebaseService) {
+        this.firebaseService = firebaseService;
     }
 
-    ngOnInit() {
-        this.candidates = this.candidateService.getCandidates();
-    }
+    public ngOnInit(): void {
+        this.candidates = this.firebaseService.candidates();
 
-    slideEvent(event) {
-        console.log(event);
+        // Whenever voting results change update the local voting results variable
+        this.firebaseService.votingResults().subscribe((results) => {
+            this.votingResults = results;
+        });
     }
 }

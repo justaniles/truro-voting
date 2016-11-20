@@ -11,3 +11,11 @@ export interface AdminOptions {
     maxVotes: number;
     pollsOpen: boolean;
 }
+
+export interface VotingResult {
+    votes: number;
+}
+
+export interface VotingResults {
+    [candidateId: string]: VotingResult;
+}

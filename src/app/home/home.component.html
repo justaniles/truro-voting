@@ -1,16 +1,37 @@
-<div class="row">
-    <div class="candidate-card col s6 m4" *ngFor="let candidate of candidates | async;">
-        <candidate-card [candidate]="candidate"
-                        (click)="toggleCandidateSelection(currentCandidate);"
-                        #currentCandidate>
-        </candidate-card>
+<div class="outer-container" [ngSwitch]="currentView">
+    <!-- Loading view -->
+    <div class="blocking-overlay" *ngSwitchCase="HomeViews.Loading">
+        <p>Loading voting screen, please wait...</p>
+    </div>
+
+    <!-- Polls closed view -->
+    <div class="blocking-overlay" *ngSwitchCase="HomeViews.PollsClosed">
+        <div class="row">
+            <div class="polls-closed-container col s10 push-s1 l6 push-l3">
+                <div class="fa fa-frown-o"></div>
+                <h4>Polls are currently closed.</h4>
+                <h4>Please contact an admin if you think they should be open.</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-view-container container">
+        <div class="row" *ngSwitchCase="HomeViews.Main">
+            <div class="candidate-card col s6 m4" *ngFor="let candidate of candidates | async;">
+                <candidate-card [candidate]="candidate"
+                                (click)="toggleCandidateSelection(currentCandidate);"
+                                #currentCandidate>
+                </candidate-card>
+            </div>
+        </div>
+        <action-bar
+                [message]="actionBarMessage"
+                [primaryButtonText]="'Vote'"
+                [secondaryButtonText]="'Reset'"
+                [visible]="selectedCandidates.length > 0"
+                (primaryButtonClicked)="actionCastVotes()"
+                (secondaryButtonClicked)="actionResetCandidateSelections()">
+        </action-bar>
     </div>
 </div>
-<action-bar
-    [message]="'This is a test message'"
-    [primaryButtonText]="'Vote'"
-    [secondaryButtonText]="'Reset'"
-    [visible]="selectedCandidates.length > 0"
-    (primaryButtonClicked)="actionCastVotes()"
-    (secondaryButtonClicked)="actionResetCandidateSelections()">
-</action-bar>

@@ -8,6 +8,10 @@
     height: 100%;
 }
 
+.outer-container {
+    height: 100%;
+}
+
 .candidate-card {
     margin-bottom: 2rem;
 }
@@ -53,5 +57,25 @@
     .action-submit {
         color: $tv-white;
         background-color: $tv-accent;
+    }
+}
+
+.blocking-overlay {
+    height: 100%;
+    background-color: $tv-white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .polls-closed-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        & > .fa {
+            font-size: 5rem;
+        }
     }
 }

@@ -1,6 +1,6 @@
-import { Component,  Input, Output, EventEmitter, HostListener } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
-import { Candidate } from "../../core/firebase/candidate.models";
+import { Candidate } from "../../core/firebase/firebase.models";
 
 @Component({
     selector: "candidate-card",
