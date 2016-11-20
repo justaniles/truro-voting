@@ -3,6 +3,11 @@
 :host {
     display: block;
     margin-top: 2rem;
+    height: 100%;
+
+    .outer-container {
+        height: 100%;
+    }
 }
 
 .candidate-list-container {
@@ -19,12 +24,33 @@
     & + & {
         border-top: 1px solid $tv-light-gray;
     }
+
+    .candidate-name {
+        margin-right: auto;
+    }
+
+    .candidate-count {
+        margin-left: auto;
+    }
 }
 
-.candidate-name {
-    margin-right: auto;
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    margin-bottom: -2rem;
+}
+.form-actions-button {
+    display: inline-block;
+
+    & + & {
+        margin-left: 1rem;
+    }
 }
 
-.candidate-count {
-    margin-left: auto;
+.blocking-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

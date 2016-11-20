@@ -1,52 +1,68 @@
-<div class="poll-options-container">
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">Poll options</span>
-            <form materialize>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="minVotes"
-                               name="minVotes"
-                               placeholder="Min number of votes"
-                               type="number"
-                               [(ngModel)]="minVotes" />
-                        <label class="active" for="minVotes">Minimum Votes</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="maxVotes"
-                               name="maxVotes"
-                               placeholder="Max number of votes"
-                               type="number"
-                               [(ngModel)]="maxVotes" />
-                        <label class="active" for="maxVotes">Maximum Votes</label>
-                    </div>
-                </div>
-                <div class="switch">
-                    <label for="pollsopen">Polls are currently
-                        <span *ngIf="pollsOpen">open</span>
-                        <span *ngIf="!pollsOpen">closed</span>
-                    </label>
-                    <br>
-                    <label>
-                        <input id="pollsopen"
-                               name="pollsopen"
-                               type="checkbox"
-                               [(ngModel)]="pollsOpen" />
-                        <span class="lever"></span>
-                    </label>
-                </div>
-            </form>
-        </div>
+<div class="outer-container">
+    <div class="blocking-container" *ngIf="!adminOptions">
+        <h5>Loading admin options...</h5>
     </div>
-</div>
-<div class="candidate-list-container">
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">Current candidates</span>
-            <div class="candidate-list">
-                <div class="candidate-list-item" *ngFor="let candidate of candidates | async;">
-                    <span class="candidate-name">{{candidate.name}}</span>
-                    <span class="candidate-count">{{votingResults[candidate.id] ? votingResults[candidate.id].votes : -1 }}</span>
+    <div class="main-content container" *ngIf="adminOptions">
+        <div class="poll-options-container">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Poll options</span>
+                    <form materialize>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="minVotes"
+                                       name="minVotes"
+                                       placeholder="Min number of votes"
+                                       type="number"
+                                       (ngModelChange)="dirtyForm()"
+                                       [(ngModel)]="adminOptions.minVotes"/>
+                                <label class="active" for="minVotes">Minimum Votes</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="maxVotes"
+                                       name="maxVotes"
+                                       placeholder="Max number of votes"
+                                       type="number"
+                                       (ngModelChange)="dirtyForm()"
+                                       [(ngModel)]="adminOptions.maxVotes"/>
+                                <label class="active" for="maxVotes">Maximum Votes</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="switch col m6 s12">
+                                <label for="pollsopen">Polls are
+                                    <span *ngIf="adminOptions.pollsOpen">open</span>
+                                    <span *ngIf="!adminOptions.pollsOpen">closed</span>
+                                </label>
+                                <br>
+                                <label>
+                                    <input id="pollsopen"
+                                           name="pollsopen"
+                                           type="checkbox"
+                                           (ngModelChange)="dirtyForm()"
+                                           [(ngModel)]="adminOptions.pollsOpen"/>
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                            <div class="form-actions col m6 s12" *ngIf="formDirty">
+                                <button class="form-actions-button btn-flat" (click)="discardChanges()">Discard changes</button>
+                                <button class="form-actions-button btn" (click)="updateAdminOptions()">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="candidate-list-container">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Current candidates</span>
+                    <div class="candidate-list">
+                        <div class="candidate-list-item" *ngFor="let candidate of candidates | async;">
+                            <span class="candidate-name">{{candidate.name}}</span>
+                            <span class="candidate-count">{{votingResults[candidate.id] ? votingResults[candidate.id].votes : -1 }}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2";
 import { Observable, BehaviorSubject } from "rxjs";
 
+import * as CommonUtils from "../utils/common.utils";
 import { AdminOptions, Candidate, VotingResults, VotingResult } from "./firebase.models";
 
 @Injectable()
@@ -40,28 +41,16 @@ export class FirebaseService {
         });
     }
 
-    public adminOptions(): Observable<AdminOptions> {
-        return this._adminOptions.asObservable();
+    public adminOptions(): BehaviorSubject<AdminOptions> {
+        return this._adminOptions;
     }
 
-    public candidates(): Observable<Candidate[]> {
-        return this._loadedCandidates.asObservable();
+    public candidates(): BehaviorSubject<Candidate[]> {
+        return this._loadedCandidates;
     }
 
-    public getCandidateVoteCount(candidate: Candidate): number {
-        const candidateId = candidate.id;
-        const votingResult = this._votingResults.getValue()[candidateId];
-
-        if (!votingResult) {
-            console.error(`No voting results found for candidate id '${candidateId}'.`);
-            return -1;
-        }
-
-        return votingResult.votes;
-    }
-
-    public votingResults(): Observable<VotingResults> {
-        return this._votingResults.asObservable();
+    public votingResults(): BehaviorSubject<VotingResults> {
+        return this._votingResults;
     }
 
     public castVotes(candidates: Candidate[]): firebase.Promise<void> {
@@ -87,5 +76,23 @@ export class FirebaseService {
         });
 
         return this.firebaseVotingResults.update(incrementedResults);
+    }
+
+    public updateAdminOptions(newAdminOptions: AdminOptions): firebase.Promise<void> {
+        // Perform basic validation
+        if (!newAdminOptions) {
+            throw "No admin options supplied to update. Cancelling update operation.";
+        }
+        else if (CommonUtils.isNullOrUndefined(newAdminOptions.pollsOpen)
+            || CommonUtils.isNullOrUndefined(newAdminOptions.maxVotes)
+            || CommonUtils.isNullOrUndefined(newAdminOptions.minVotes))
+        {
+            throw `Incomplete admin options provided to update (one or more of its properties `
+             + `are null or undefined). { minVotes: ${newAdminOptions.minVotes}, maxVotes: ${newAdminOptions.maxVotes}, `
+             + `pollsOpen: ${newAdminOptions.pollsOpen} }`;
+        }
+
+        // Validation passes, update firebase
+        return this.firebaseAdmin.update(newAdminOptions);
     }
 }

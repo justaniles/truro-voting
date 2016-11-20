@@ -35,6 +35,7 @@
     "@types/hammerjs": "^2.0.32",
     "@types/jasmine": "^2.2.30",
     "@types/jquery": "^2.0.34",
+    "@types/materialize-css": "^0.97.32",
     "@types/q": "0.0.32",
     "angular-cli": "1.0.0-beta.14",
     "codelyzer": "~0.0.26",
