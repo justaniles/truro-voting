@@ -1,0 +1,29 @@
+<modal #candidateModal>
+    <div class="candidate-edit-container">
+        <h3>Edit Candidate</h3>
+        <form materialize>
+            <label class="active" for="candidateName">Name</label>
+            <input id="candidateName"
+                   name="candidateName"
+                   placeholder="Candidate name"
+                   type="text"
+                   [(ngModel)]="candidateToEdit.name"/>
+            <label class="active" for="candidateBio">Bio</label>
+            <input id="candidateBio"
+                   name="candidateBio"
+                   placeholder="Candidate bio"
+                   type="text"
+                   [(ngModel)]="candidateToEdit.bio"/>
+            <label class="active" for="candidateImage">Image</label>
+            <input id="candidateImage"
+                   name="candidateImage"
+                   placeholder="Candidate image"
+                   type="text"
+                   [(ngModel)]="candidateToEdit.imageUrl"/>
+            <div class="form-actions">
+                <button class="form-actions-button btn-flat" (click)="dismiss()">Cancel</button>
+                <button class="form-actions-button btn" (click)="updateCurrentCandidate()">Update</button>
+            </div>
+        </form>
+    </div>
+</modal>

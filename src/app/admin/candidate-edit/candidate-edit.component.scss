@@ -1,0 +1,13 @@
+@import "../../../styles/variables";
+
+.candidate-edit-container {
+    max-width: 95%;
+    width: 600px;
+    padding: 2rem;
+}
+
+.form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

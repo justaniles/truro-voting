@@ -58,7 +58,9 @@
                 <div class="card-content">
                     <span class="card-title">Current candidates</span>
                     <div class="candidate-list">
-                        <div class="candidate-list-item" *ngFor="let candidate of candidates | async;">
+                        <div class="candidate-list-item"
+                             *ngFor="let candidate of candidates | async;"
+                             (click)="candidateEditModal.editCandidate(candidate);">
                             <span class="candidate-name">{{candidate.name}}</span>
                             <span class="candidate-count">{{votingResults[candidate.id] ? votingResults[candidate.id].votes : -1 }}</span>
                         </div>
@@ -68,3 +70,4 @@
         </div>
     </div>
 </div>
+<candidate-edit-modal #candidateEditModal></candidate-edit-modal>

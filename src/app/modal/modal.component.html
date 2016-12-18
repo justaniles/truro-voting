@@ -1,0 +1,5 @@
+<div class="modal-background" *ngIf="active" (click)="dismiss()">
+    <div class="modal-container z-depth-4" (click)="stopPropagation($event)">
+        <ng-content></ng-content>
+    </div>
+</div>

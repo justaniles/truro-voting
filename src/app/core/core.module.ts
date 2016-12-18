@@ -6,7 +6,6 @@ import { CommonModule }      from '@angular/common';
 
 import { FirebaseService } from "./firebase";
 
-
 @NgModule({
     imports: [ CommonModule ]
 })

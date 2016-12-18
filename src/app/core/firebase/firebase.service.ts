@@ -1,7 +1,7 @@
 import * as firebase from "firebase";
-import { Injectable } from "@angular/core";
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2";
-import { Observable, BehaviorSubject } from "rxjs";
+import { Inject, Injectable } from "@angular/core";
+import { AngularFire, FirebaseApp, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2";
+import { BehaviorSubject } from "rxjs";
 
 import * as CommonUtils from "../utils/common.utils";
 import { AdminOptions, Candidate, VotingResults, VotingResult } from "./firebase.models";
@@ -94,5 +94,30 @@ export class FirebaseService {
 
         // Validation passes, update firebase
         return this.firebaseAdmin.update(newAdminOptions);
+    }
+
+    public updateCandidate(candidate: Candidate): firebase.Promise<void> {
+        // Ensure that the candidate parameter doesn't have any metadata on it
+        candidate = {
+            id: candidate.id,
+            name: candidate.name,
+            bio: candidate.bio,
+            imageUrl: candidate.imageUrl
+        };
+
+        const candidates = this._loadedCandidates.getValue();
+
+        // Ensure this candidate exists already
+        const existingCandidate = candidates.find((c) => {
+            return c.id === candidate.id;
+        });
+        if (!existingCandidate) {
+            throw `Cannot update candidate with id '${candidate.id}', because it does not exist `
+                + `on the server. Cancelling update operation.`;
+        }
+
+        // Perform the update
+        const updateKey = existingCandidate.$key;
+        return this.firebaseCandidates.update(updateKey, candidate);
     }
 }

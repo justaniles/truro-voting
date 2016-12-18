@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Observable } from "rxjs";
 
 import * as CommonUtils from "../core/utils/common.utils";
@@ -11,6 +11,7 @@ import { AdminOptions, Candidate, FirebaseService, VotingResults } from "../core
 })
 export class AdminComponent implements OnInit {
     public candidates: Observable<Candidate[]>;
+
     public formDirty = false;
     public votingResults: VotingResults;
 
@@ -21,11 +22,11 @@ export class AdminComponent implements OnInit {
         this.firebaseService = firebaseService;
     }
 
-    public get adminOptions(): AdminOptions {
+    get adminOptions(): AdminOptions {
         return this._adminOptions;
     }
 
-    public set adminOptions(options: AdminOptions) {
+    set adminOptions(options: AdminOptions) {
         if (!options) {
             this._adminOptions = null;
             return;

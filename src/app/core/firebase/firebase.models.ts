@@ -1,9 +1,11 @@
 export interface Candidate {
-    $key: string;
     id: string;
     name: string;
     bio?: string;
     imageUrl?: string;
+
+    // Metadata properties:
+    $key?: string;
 }
 
 export interface AdminOptions {
