@@ -52,19 +52,25 @@ export class HomeComponent implements OnInit {
     }
 
     /**
-     * Toggles whether a candidate is selected.
+     * Toggles whether a candidate is selected
      *
      * @param candidateComponent The candidate component to toggle selected.
      */
     public toggleCandidateSelection(candidateComponent: CandidateCardComponent): void {
-        const newSelectionState = !candidateComponent.selected;
-        candidateComponent.selected = newSelectionState;
+        const newSelectedState = !candidateComponent.selected;
+        const atMaxVotes = this.selectedCandidates.length >= this.maxVotes;
+        if (newSelectedState && atMaxVotes) {
+            Materialize.toast(`You cannot select more than ${this.maxVotes} candidate(s) to vote for.`, 3000);
+            return;
+        }
+
+        candidateComponent.selected = newSelectedState;
 
         const candidateIndex = this.selectedCandidates.indexOf(candidateComponent);
-        if (newSelectionState && candidateIndex === -1) {
+        if (newSelectedState && candidateIndex === -1) {
             this.selectedCandidates.push(candidateComponent);
         }
-        else if (!newSelectionState && candidateIndex !== -1) {
+        else if (!newSelectedState && candidateIndex !== -1) {
             this.selectedCandidates.splice(candidateIndex, 1);
         }
     }

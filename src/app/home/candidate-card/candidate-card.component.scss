@@ -1,45 +1,69 @@
 @import "../../../styles/variables";
 
+$card-image-selected-border-width: 5px;
+$checkbox-size: 40px;
+
 :host {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .candidate {
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 200ms;
 
-    //&::after {
-    //    content: "";
-    //    position: absolute;
-    //    top: 0px;
-    //    right: 0px;
-    //    bottom: 0px;
-    //    left: 0px;
-    //    border-top: 0px solid $tv-secondary;
-    //    background-color: transparent;
-    //    transition: 200ms;
-    //}
-    //
-    //&.selected::after {
-    //    border-width: 24px;
-    //}
+    .card {
+        margin: 0;
 
-    &.selected {
-        box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.12), 0px 7px 15px 0px rgba(0,0,0,0.24);
+        &:active {
+            box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.12), 0px 7px 15px 0px rgba(0,0,0,0.24);
+        }
+    }
+
+    .card-image {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            border: 0px solid $tv-success;
+            border-radius: 2px 2px 0px 0px;
+            transition: 200ms;
+        }
+
+        &.selected::after {
+            border-width: $card-image-selected-border-width;
+        }
+    }
+
+    .card-content {
+        position: relative;
+        transition: 200ms;
+
+        &.selected {
+            background-color: $tv-success;
+            color: $tv-white;
+        }
     }
 }
 
 .checked-icon {
     position: absolute;
-    top: -4rem;
-    right: 1rem;
-    font-size: 3rem;
-    color: $tv-accent;
-    text-shadow: rgba(255,255,255,0.3) 0 1px 3px;
+    top: 0px;
+    right: 20px;
+    height: $checkbox-size;
+    width: $checkbox-size;
+    opacity: 0;
+    border-radius: $checkbox-size/2;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
     transition: 200ms;
 
     &.visible {
-        top: 2rem;
+        top: -$checkbox-size/2 - $card-image-selected-border-width;
+        opacity: 1;
     }
 }
