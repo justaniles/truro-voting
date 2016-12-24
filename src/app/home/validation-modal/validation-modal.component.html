@@ -1,0 +1,31 @@
+<modal #modal [ngSwitch]="validationState">
+    <!-- Validation pending -->
+    <modal-content *ngSwitchCase="'pending'">
+        <span class="fa fa-spinner fa-spin fa-3x"></span>
+        <h4>Validating, please wait...</h4>
+    </modal-content>
+
+    <!-- Validation failed -->
+    <modal-content *ngSwitchCase="'failed'">
+        <h4>Uh oh!</h4>
+        <p class="preserve-line-breaks">{{validationFailureReason}}</p>
+    </modal-content>
+    <modal-actions *ngSwitchCase="'failed'">
+        <button class="btn-flat" (click)="dismiss()">Close</button>
+    </modal-actions>
+
+    <!-- Validation passed, show confirmation -->
+    <modal-content *ngSwitchCase="'passed'">
+        <h4>Confirm your votes</h4>
+        <p>You are about to vote for the following candidates:</p>
+        <ul class="collection">
+            <li class="collection-item" *ngFor="let candidate of selectedCandidates">
+                {{candidate.name}}
+            </li>
+        </ul>
+    </modal-content>
+    <modal-actions *ngSwitchCase="'passed'">
+        <button class="btn-flat" (click)="dismiss()">Cancel</button>
+        <button class="btn" (click)="castVotes()">Vote</button>
+    </modal-actions>
+</modal>

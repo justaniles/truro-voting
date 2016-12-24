@@ -3,15 +3,7 @@
 $card-image-selected-border-width: 5px;
 $checkbox-size: 40px;
 
-:host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
 .candidate {
-
     .card {
         margin: 0;
 

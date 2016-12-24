@@ -1,3 +1,4 @@
+@import "./helpers";
 @import "../../node_modules/materialize-css/dist/css/materialize.min.css";
 @import "../../node_modules/font-awesome/css/font-awesome.min.css";
 
@@ -6,4 +7,5 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+    font-size: 16px;
 }

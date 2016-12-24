@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { CandidateCardComponent } from "./candidate-card/candidate-card.component";
+import { ValidationModalComponent } from "./validation-modal/validation-modal.component";
 import { AdminOptions, Candidate, FirebaseService } from "../core/firebase";
 
 export enum HomeViews {
@@ -25,6 +26,9 @@ export class HomeComponent implements OnInit {
     public actionBarMessage = "";
     private firebaseService: FirebaseService;
     private selectedCandidates: CandidateCardComponent[] = [];
+
+    @ViewChild(ValidationModalComponent)
+    private validationModal: ValidationModalComponent;
 
     constructor(candidateService: FirebaseService) {
         this.firebaseService = candidateService;
@@ -83,8 +87,7 @@ export class HomeComponent implements OnInit {
         const candidates = this.selectedCandidates.map((candidate) => {
             return candidate.candidate;
         });
-        this.firebaseService.castVotes(candidates);
-        this.actionResetCandidateSelections();
+        this.validationModal.performValidation(candidates);
     }
 
     /**

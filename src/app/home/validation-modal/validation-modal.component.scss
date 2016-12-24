@@ -1,11 +1,12 @@
 @import "../../../styles/variables";
 
-.candidate-edit-container {
-    width: 600px;
-}
-
 .form-actions {
     width: 100%;
+    margin-top: 1rem;
     display: flex;
     justify-content: flex-end;
+
+    .button + .button {
+        margin-left: 1rem;
+    }
 }

@@ -19,9 +19,9 @@
     <div class="main-view-container container">
         <div class="row" *ngSwitchCase="HomeViews.Main">
             <div class="candidate-card col s6 m4" *ngFor="let candidate of candidates | async;">
-                <candidate-card [candidate]="candidate"
-                                (click)="toggleCandidateSelection(currentCandidate);"
-                                #currentCandidate>
+                <candidate-card #currentCandidate
+                                [candidate]="candidate"
+                                (click)="toggleCandidateSelection(currentCandidate);">
                 </candidate-card>
             </div>
         </div>
@@ -35,3 +35,4 @@
         </action-bar>
     </div>
 </div>
+<validation-modal></validation-modal>
