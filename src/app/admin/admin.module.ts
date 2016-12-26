@@ -6,15 +6,12 @@ import { RouterModule } from "@angular/router";
 import { AdminComponent } from "./admin.component";
 import { adminRoutes } from "./admin.routes";
 import { CandidateEditComponent } from "./candidate-edit";
-import { ModalModule } from "../modal";
+import { SharedModule } from "../shared";
 
 @NgModule({
     declarations: [ AdminComponent, CandidateEditComponent ],
     imports: [
-        CommonModule,
-        FormsModule,
-        ModalModule,
-        RouterModule,
+        SharedModule,
         adminRoutes
     ]
 })

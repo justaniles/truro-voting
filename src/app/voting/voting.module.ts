@@ -4,24 +4,23 @@ import { RouterModule } from "@angular/router";
 
 import { ActionBarComponent } from "./action-bar/action-bar.component";
 import { CandidateCardComponent } from "./candidate-card/candidate-card.component";
-import { HomeComponent } from "./home.component";
-import { homeRoutes } from "./home.routes";
+import { VotingComponent } from "./voting.component";
+import { homeRoutes } from "./voting.routes";
 import { ValidationModalComponent } from "./validation-modal/validation-modal.component";
-import { ModalModule } from "../modal";
+import { SharedModule } from "../shared";
 
 @NgModule({
     declarations: [
         ActionBarComponent,
         CandidateCardComponent,
-        HomeComponent,
+        VotingComponent,
         ValidationModalComponent
     ],
     imports: [
-        CommonModule,
-        ModalModule,
+        SharedModule,
         RouterModule,
         homeRoutes
     ]
 })
-export class HomeModule {
+export class VotingModule {
 }

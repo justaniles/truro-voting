@@ -2,7 +2,7 @@ import { Component, ViewChild } from "@angular/core";
 
 import * as CommonUtils from "../../core/utils/common.utils";
 import { Candidate, FirebaseService } from "../../core/firebase";
-import { ModalComponent } from "../../modal";
+import { ModalComponent } from "../../shared/modal";
 
 @Component({
     selector: "candidate-edit-modal",

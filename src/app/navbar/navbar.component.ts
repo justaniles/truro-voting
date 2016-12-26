@@ -14,8 +14,8 @@ export class NavbarComponent {
 
     navbarItems: NavbarItem[] = [
         {
-            name: "Home",
-            url: "/home"
+            name: "Voting",
+            url: "/voting"
         },
         {
             name: "Admin",

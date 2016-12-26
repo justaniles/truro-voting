@@ -1,11 +1,11 @@
 <div class="outer-container" [ngSwitch]="currentView">
     <!-- Loading view -->
-    <div class="blocking-overlay" *ngSwitchCase="HomeViews.Loading">
+    <div class="blocking-overlay" *ngSwitchCase="'loading'">
         <p>Loading voting screen, please wait...</p>
     </div>
 
     <!-- Polls closed view -->
-    <div class="blocking-overlay" *ngSwitchCase="HomeViews.PollsClosed">
+    <div class="blocking-overlay" *ngSwitchCase="'pollsClosed'">
         <div class="row">
             <div class="polls-closed-container col s10 push-s1 l6 push-l3">
                 <div class="fa fa-frown-o"></div>
@@ -17,7 +17,7 @@
 
     <!-- Main content -->
     <div class="main-view-container container">
-        <div class="row" *ngSwitchCase="HomeViews.Main">
+        <div class="row" *ngSwitchCase="'main'">
             <div class="candidate-card col s6 m4" *ngFor="let candidate of candidates | async;">
                 <candidate-card #currentCandidate
                                 [candidate]="candidate"

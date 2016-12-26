@@ -5,21 +5,16 @@ import { CandidateCardComponent } from "./candidate-card/candidate-card.componen
 import { ValidationModalComponent } from "./validation-modal/validation-modal.component";
 import { AdminOptions, Candidate, FirebaseService } from "../core/firebase";
 
-export enum HomeViews {
-    Loading,
-    PollsClosed,
-    Main
-};
+type VotingViews = "main" | "loading" | "pollsClosed";
 
 @Component({
-    selector: "home",
-    templateUrl: "./home.component.html",
-    styleUrls: [ "./home.component.scss" ]
+    selector: "voting",
+    templateUrl: "./voting.component.html",
+    styleUrls: [ "./voting.component.scss" ]
 })
-export class HomeComponent implements OnInit {
-    public HomeViews = HomeViews;
+export class VotingComponent implements OnInit {
     public candidates: Observable<Candidate[]>;
-    public currentView: HomeViews = HomeViews.Loading;
+    public currentView: VotingViews = "loading";
     public minVotes: number;
     public maxVotes: number;
     public pollsOpen = true;
@@ -117,13 +112,13 @@ export class HomeComponent implements OnInit {
 
     private updateCurrentView(): void {
         if (!this.minVotes || !this.maxVotes || !this.candidates) {
-            this.currentView = HomeViews.Loading;
+            this.currentView = "loading";
         }
         else if (!this.pollsOpen) {
-            this.currentView = HomeViews.PollsClosed;
+            this.currentView = "pollsClosed";
         }
         else {
-            this.currentView = HomeViews.Main;
+            this.currentView = "main";
         }
     }
 }

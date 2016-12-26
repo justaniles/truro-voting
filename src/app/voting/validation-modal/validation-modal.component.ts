@@ -3,7 +3,7 @@ import { Component, ViewChild } from "@angular/core";
 
 import * as CommonUtils from "../../core/utils/common.utils";
 import { AdminOptions, Candidate, FirebaseService } from "../../core/firebase";
-import { ModalComponent } from "../../modal";
+import { ModalComponent } from "../../shared/modal";
 
 type ValidationState = "passed" | "failed" | "pending";
 
