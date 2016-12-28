@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Observable } from "rxjs";
 
 import * as CommonUtils from "../core/utils/common.utils";
+import { CandidateEditComponent } from "./candidate-edit";
 import { AdminOptions, Candidate, FirebaseService, VotingResults } from "../core/firebase";
 
 @Component({
@@ -10,13 +11,14 @@ import { AdminOptions, Candidate, FirebaseService, VotingResults } from "../core
     styleUrls: [ "./admin.component.scss" ]
 })
 export class AdminComponent implements OnInit {
-    public candidates: Observable<Candidate[]>;
-
-    public formDirty = false;
-    public votingResults: VotingResults;
+    @ViewChild(CandidateEditComponent)
+    private candidateEditModal: CandidateEditComponent;
 
     private _adminOptions: AdminOptions;
+    private candidates: Observable<Candidate[]>;
     private firebaseService: FirebaseService;
+    private formDirty = false;
+    private votingResults: VotingResults;
 
     constructor(firebaseService: FirebaseService) {
         this.firebaseService = firebaseService;
@@ -49,7 +51,11 @@ export class AdminComponent implements OnInit {
         });
     }
 
-    public dirtyForm(): void {
+    private editCandidate(candidate: Candidate): void {
+        this.candidateEditModal.editCandidate(candidate);
+    }
+
+    public setFormToDirty(): void {
         this.formDirty = true;
     }
 

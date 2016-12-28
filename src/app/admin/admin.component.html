@@ -14,7 +14,7 @@
                                        name="minVotes"
                                        placeholder="Min number of votes"
                                        type="number"
-                                       (ngModelChange)="dirtyForm()"
+                                       (ngModelChange)="setFormToDirty()"
                                        [(ngModel)]="adminOptions.minVotes"/>
                                 <label class="active" for="minVotes">Minimum Votes</label>
                             </div>
@@ -23,7 +23,7 @@
                                        name="maxVotes"
                                        placeholder="Max number of votes"
                                        type="number"
-                                       (ngModelChange)="dirtyForm()"
+                                       (ngModelChange)="setFormToDirty()"
                                        [(ngModel)]="adminOptions.maxVotes"/>
                                 <label class="active" for="maxVotes">Maximum Votes</label>
                             </div>
@@ -39,7 +39,7 @@
                                     <input id="pollsopen"
                                            name="pollsopen"
                                            type="checkbox"
-                                           (ngModelChange)="dirtyForm()"
+                                           (ngModelChange)="setFormToDirty()"
                                            [(ngModel)]="adminOptions.pollsOpen"/>
                                     <span class="lever"></span>
                                 </label>
@@ -60,7 +60,7 @@
                     <div class="candidate-list">
                         <div class="candidate-list-item"
                              *ngFor="let candidate of candidates | async;"
-                             (click)="candidateEditModal.editCandidate(candidate);">
+                             (click)="editCandidate(candidate);">
                             <span class="candidate-name">{{candidate.name}}</span>
                             <span class="candidate-count">{{votingResults[candidate.id] ? votingResults[candidate.id].votes : -1 }}</span>
                         </div>
@@ -70,4 +70,4 @@
         </div>
     </div>
 </div>
-<candidate-edit-modal #candidateEditModal></candidate-edit-modal>
+<candidate-edit-modal></candidate-edit-modal>

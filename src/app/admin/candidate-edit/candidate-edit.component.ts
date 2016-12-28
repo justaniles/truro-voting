@@ -13,17 +13,18 @@ export class CandidateEditComponent {
 
     @ViewChild("candidateModal")
     private candidateModal: ModalComponent;
-    private candidateToEdit: Candidate = {
-        $key: "",
-        id: "",
-        name: "",
-        bio: "",
-        imageUrl: ""
-    };
+    private candidateToEdit: Candidate;
     private firebaseService: FirebaseService;
 
     constructor(firebaseService: FirebaseService) {
         this.firebaseService = firebaseService;
+        this.candidateToEdit = {
+            $key: "",
+            id: "",
+            name: "",
+            bio: "",
+            imageUrl: ""
+        };
     }
 
     public dismiss(): void {
@@ -35,7 +36,7 @@ export class CandidateEditComponent {
         this.candidateModal.show();
     }
 
-    public updateCurrentCandidate(): void {
+    private updateCurrentCandidate(): void {
         this.firebaseService.updateCandidate(this.candidateToEdit)
             .then(() => {
                 this.candidateModal.dismiss();
