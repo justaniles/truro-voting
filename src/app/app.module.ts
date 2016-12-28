@@ -6,6 +6,7 @@ import { MaterializeModule } from "angular2-materialize";
 
 import { AppComponent }   from "./app.component";
 import { AdminModule } from "./admin";
+import { HomeModule } from "./home";
 import { VotingModule } from "./voting";
 import { NavbarModule } from "./navbar";
 import { CoreModule } from "./core";
@@ -25,11 +26,12 @@ var angularFireConfig = {
         AngularFireModule.initializeApp(angularFireConfig),
         BrowserModule,
         CoreModule.forRoot(),
-        VotingModule,
+        HomeModule,
         MaterializeModule,
         NavbarModule,
         RouterModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        VotingModule
     ],
     bootstrap: [ AppComponent ],
 })
