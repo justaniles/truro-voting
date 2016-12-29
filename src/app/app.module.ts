@@ -8,7 +8,6 @@ import { AppComponent }   from "./app.component";
 import { AdminModule } from "./admin";
 import { HomeModule } from "./home";
 import { VotingModule } from "./voting";
-import { NavbarModule } from "./navbar";
 import { CoreModule } from "./core";
 
 var angularFireConfig = {
@@ -25,10 +24,9 @@ var angularFireConfig = {
         AdminModule,
         AngularFireModule.initializeApp(angularFireConfig),
         BrowserModule,
-        CoreModule.forRoot(),
+        CoreModule,
         HomeModule,
         MaterializeModule,
-        NavbarModule,
         RouterModule,
         RouterModule.forRoot([]),
         VotingModule

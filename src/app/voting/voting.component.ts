@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 
 import { CandidateCardComponent } from "./candidate-card/candidate-card.component";
@@ -8,25 +9,27 @@ import { AdminOptions, Candidate, FirebaseService } from "../core/firebase";
 type VotingViews = "main" | "loading" | "pollsClosed";
 
 @Component({
-    selector: "voting",
+    selector: "tv-voting",
     templateUrl: "./voting.component.html",
     styleUrls: [ "./voting.component.scss" ]
 })
 export class VotingComponent implements OnInit {
-    public candidates: Observable<Candidate[]>;
-    public currentView: VotingViews = "loading";
-    public minVotes: number;
-    public maxVotes: number;
-    public pollsOpen = true;
-    public actionBarMessage = "";
+    private actionBarMessage = "";
+    private candidates: Observable<Candidate[]>;
+    private currentView: VotingViews = "loading";
     private firebaseService: FirebaseService;
+    private maxVotes: number;
+    private minVotes: number;
+    private pollsOpen = true;
+    private router: Router;
     private selectedCandidates: CandidateCardComponent[] = [];
 
     @ViewChild(ValidationModalComponent)
     private validationModal: ValidationModalComponent;
 
-    constructor(candidateService: FirebaseService) {
+    constructor(candidateService: FirebaseService, router: Router) {
         this.firebaseService = candidateService;
+        this.router = router;
     }
 
     /**
@@ -55,7 +58,7 @@ export class VotingComponent implements OnInit {
      *
      * @param candidateComponent The candidate component to toggle selected.
      */
-    public toggleCandidateSelection(candidateComponent: CandidateCardComponent): void {
+    private toggleCandidateSelection(candidateComponent: CandidateCardComponent): void {
         const newSelectedState = !candidateComponent.selected;
         const atMaxVotes = this.selectedCandidates.length >= this.maxVotes;
         if (newSelectedState && atMaxVotes) {
@@ -78,7 +81,7 @@ export class VotingComponent implements OnInit {
      * Performs verifications then casts votes via the firebaseService for the candidates
      * that the user has selected.
      */
-    public actionCastVotes(): void {
+    private actionCastVotes(): void {
         const candidates = this.selectedCandidates.map((candidate) => {
             return candidate.candidate;
         });
@@ -88,7 +91,7 @@ export class VotingComponent implements OnInit {
     /**
      * Resets the selected candidates list so that all candidates show as unselected.
      */
-    public actionResetCandidateSelections(): void {
+    private actionResetCandidateSelections(): void {
         this.selectedCandidates.forEach((selectedCandidate) => {
             selectedCandidate.selected = false;
         });
@@ -120,5 +123,9 @@ export class VotingComponent implements OnInit {
         else {
             this.currentView = "main";
         }
+    }
+
+    private gotoHome(): void {
+        this.router.navigateByUrl("/");
     }
 }

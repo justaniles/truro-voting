@@ -1,0 +1,21 @@
+<div class="title-wrapper" *ngIf="visible">
+    <div class="title-container container">
+
+        <div class="title-container-left">
+            <a class="title-logo" routerLink="/">
+                <span>Truro Voting</span>
+            </a>
+        </div>
+
+        <div class="title-container-center">
+            <span class="title-text">{{titleBarText}}</span>
+        </div>
+
+        <div class="title-container-right">
+            <a class="title-item" *ngFor="let titleBarItem of titleBarItems;" (click)="titleBarItem.onClick();">
+                <span>{{titleBarItem.name}}</span>
+            </a>
+        </div>
+
+    </div>
+</div>

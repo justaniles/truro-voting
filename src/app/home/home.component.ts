@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
+import { TitleBarService } from "../core/title-bar";
+
 @Component({
     selector: "tv-home",
     templateUrl: "./home.component.html",
@@ -8,10 +10,12 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent {
 
-    private router: Router;
 
-    constructor(router: Router) { 
-        this.router = router;
+    constructor(
+        private router: Router,
+        private titleBarService: TitleBarService
+    ) {
+        titleBarService.updateTitleBar(false);
     }
 
     public gotoAdmin(): void {

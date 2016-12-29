@@ -6,7 +6,10 @@
 }
 
 .main {
-    padding-top: $nav-height;
     height: 100%;
     position: relative;
+
+    &.title-bar-visible {
+        padding-top: $title-bar-height;
+    }
 }

@@ -1,22 +1,29 @@
+@import "../../styles/helpers";
 @import "../../styles/variables";
 
 :host {
-    display: block;
-    position: relative;
-    padding-top: 2rem;
-    width: 100%;
     height: 100%;
 }
 
 .outer-container {
     height: 100%;
+    position: relative;
+}
+
+.gotoHome {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+
+    @include faded-icon();
 }
 
 .candidate-card {
     margin-bottom: 2rem;
 }
 
-.blocking-overlay {
+.blocking-view {
     height: 100%;
     background-color: $tv-white;
 
@@ -34,4 +41,8 @@
             font-size: 5rem;
         }
     }
+}
+
+.main-view-container {
+    padding-top: 2rem;
 }

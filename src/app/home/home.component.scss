@@ -1,3 +1,4 @@
+@import "../../styles/helpers";
 @import "../../styles/variables";
 
 :host {
@@ -13,11 +14,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-image: url("assets/photos/truro-background.jpg");
+    background-size: cover;
 }
 
-.home-content {
+.hero {
     text-align: center;
     padding-bottom: 2rem;
+
+    .hero-text {
+        color: white;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
 
     button {
         margin-top: 1rem;
@@ -26,16 +35,9 @@
 
 .gotoAdmin {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
     font-size: 2rem;
-    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.4);
-    color: $tv-light-gray;
-    opacity: 0.3;
-    transition: 200ms;
-    cursor: pointer;
 
-    &:hover {
-        opacity: 1;
-    }
+    @include faded-icon();
 }

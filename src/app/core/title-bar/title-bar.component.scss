@@ -1,44 +1,56 @@
-@import "../../styles/variables";
+@import "../../../styles/variables";
 
-:host {
-    height: $nav-height;
+.title-wrapper {
+    background-color: $tv-primary;
     width: 100%;
+    height: $title-bar-height;
     position: fixed;
     top: 0px;
     left: 0px;
-    -webkit-transform: scale3d(1, 1, 1); // to fix Chrome mobile issues
     z-index: 2;
-    background-color: $tv-primary;
 }
 
-.nav-container {
+.title-container {
+    display: flex;
+    height: 100%;
+}
+
+.title-container-center {
     height: 100%;
     display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.nav-container-left {
+.title-container-left {
     height: 100%;
     margin-right: auto;
 }
 
-.nav-container-right {
+.title-container-right {
     height: 100%;
     margin-left: auto;
 }
 
-.nav-logo {
+.title-text {
+    color: $tv-white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.title-logo {
     height: 100%;
     display: flex;
     align-items: center;
     color: $tv-white;
-    font-size: 1.5em;
 
     &:hover {
         cursor: pointer;
     }
 }
 
-.nav-item {
+.title-item {
     height: 100%;
     display: inline-flex;
     justify-content: center;

@@ -1,4 +1,4 @@
-<nav class="tv-navbar"></nav>
-<div class="main">
+<tv-title-bar></tv-title-bar>
+<div class="main" [ngClass]="{'title-bar-visible': titleBarVisible}">
     <router-outlet></router-outlet>
 </div>
