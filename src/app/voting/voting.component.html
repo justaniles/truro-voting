@@ -1,6 +1,4 @@
 <div class="outer-container" [ngSwitch]="currentView">
-    <a class="fa fa-times gotoHome" (click)="gotoHome()"></a>
-
     <!-- Loading view -->
     <div class="blocking-view" *ngSwitchCase="'loading'">
         <p>Loading voting screen, please wait...</p>

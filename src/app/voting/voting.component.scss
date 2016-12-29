@@ -10,15 +10,6 @@
     position: relative;
 }
 
-.gotoHome {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-
-    @include faded-icon();
-}
-
 .candidate-card {
     margin-bottom: 2rem;
 }

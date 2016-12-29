@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { CandidateCardComponent } from "./candidate-card/candidate-card.component";
 import { ValidationModalComponent } from "./validation-modal/validation-modal.component";
 import { AdminOptions, Candidate, FirebaseService } from "../core/firebase";
+import { TitleBarService } from "../core/title-bar";
 
 type VotingViews = "main" | "loading" | "pollsClosed";
 
@@ -17,26 +18,19 @@ export class VotingComponent implements OnInit {
     private actionBarMessage = "";
     private candidates: Observable<Candidate[]>;
     private currentView: VotingViews = "loading";
-    private firebaseService: FirebaseService;
     private maxVotes: number;
     private minVotes: number;
     private pollsOpen = true;
-    private router: Router;
     private selectedCandidates: CandidateCardComponent[] = [];
 
     @ViewChild(ValidationModalComponent)
     private validationModal: ValidationModalComponent;
 
-    constructor(candidateService: FirebaseService, router: Router) {
-        this.firebaseService = candidateService;
-        this.router = router;
-    }
-
-    /**
-     * Initialize the subscriptions to the firebase observables that drive the candidates
-     * and admin options used for this voting screen.
-     */
-    public ngOnInit(): void {
+    constructor(
+        private firebaseService: FirebaseService,
+        private router: Router,
+        private titleBarService: TitleBarService
+    ) {
         // Initialize list of candidates
         this.candidates = this.firebaseService.candidates();
 
@@ -51,6 +45,19 @@ export class VotingComponent implements OnInit {
             this.updateActionBarMessage();
             this.updateCurrentView();
         });
+    }
+
+    public ngOnInit(): void {
+        this.titleBarService.updateTitleBar(
+            true,
+            `Select candidates for vestry`,
+            [
+                {
+                    name: "Quit",
+                    onClick: this.gotoHome.bind(this)
+                }
+            ]
+        );
     }
 
     /**
