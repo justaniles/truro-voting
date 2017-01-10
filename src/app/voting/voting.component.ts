@@ -50,7 +50,7 @@ export class VotingComponent implements OnInit {
     public ngOnInit(): void {
         this.titleBarService.updateTitleBar(
             true,
-            `Select candidates for vestry`,
+            `Vestry Voting`,
             [
                 {
                     name: "Quit",
