@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 
 import { CandidateCardComponent } from "./candidate-card/candidate-card.component";
+import { QuitConfirmationComponent } from "./quit-confirmation/quit-confirmation.component";
 import { ValidationModalComponent } from "./validation-modal/validation-modal.component";
 import { AdminOptions, Candidate, FirebaseService } from "../core/firebase";
 import { TitleBarService } from "../core/title-bar";
@@ -23,7 +24,10 @@ export class VotingComponent implements OnInit {
     private pollsOpen = true;
     private selectedCandidates: CandidateCardComponent[] = [];
 
-    @ViewChild(ValidationModalComponent)
+    @ViewChild("quitConfirmationModal")
+    private quitConfirmationModal: QuitConfirmationComponent;
+
+    @ViewChild("validationModal")
     private validationModal: ValidationModalComponent;
 
     constructor(
@@ -54,7 +58,7 @@ export class VotingComponent implements OnInit {
             [
                 {
                     name: "Quit",
-                    onClick: this.gotoHome.bind(this)
+                    onClick: this.confirmQuit.bind(this)
                 }
             ]
         );
@@ -132,7 +136,7 @@ export class VotingComponent implements OnInit {
         }
     }
 
-    private gotoHome(): void {
-        this.router.navigateByUrl("/");
+    private confirmQuit(): void {
+        this.quitConfirmationModal.showConfirmationDialog();
     }
 }

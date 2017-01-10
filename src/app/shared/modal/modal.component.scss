@@ -31,5 +31,9 @@
         width: 100%;
         display: flex;
         justify-content: flex-end;
+
+        button {
+            color: $tv-primary;
+        }
     }
 }
